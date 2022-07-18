@@ -14,3 +14,5 @@ learn design pattern by myself.
 - [Iterator](https://refactoring.guru/design-patterns/iterator/python/example#lang-features)
 - [Observer](https://refactoring.guru/design-patterns/observer/python/example#lang-features)
 - [Strategy](https://refactoring.guru/design-patterns/strategy/python/example#lang-features)
+- [Template Method](https://refactoring.guru/design-patterns/template-method)
+- [Chain of Responsibility](https://refactoring.guru/design-patterns/chain-of-responsibility/python/example)
