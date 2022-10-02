@@ -5,9 +5,10 @@
  * 
  * Reference:
  *  - https://refactoring.guru/design-patterns/adapter/typescript/example
+ *  - https://github.com/Design-pattrns/Adapter-Pattern
  */
 
-// 目標者
+// 目標者, adapter interface
 class Target {
     request(): string {
         return 'Target: The default target\'s behavior.';
@@ -15,7 +16,7 @@ class Target {
 }
 
 
-// 適應者
+// 適應者, role to be adapted.
 class Adaptee {
     public specificRequest(): string {
         return '.eetpadA eht fo roivaheb laicepS';
