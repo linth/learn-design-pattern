@@ -13,3 +13,4 @@
 # Reference
 - [Adapter Pattern 介紹及 JavaScript 實作](https://medium.com/%E5%93%88%E5%98%8D-%E4%B8%96%E7%95%8C/adapter-pattern-%E4%BB%8B%E7%B4%B9%E5%8F%8A-javascript-%E5%AF%A6%E4%BD%9C-c4f168f1cd26)
 - [Adapter Pattern(適配器模式)](https://badgameshow.com/fly/design-pattern-adapter-pattern%E9%81%A9%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/fly/design-pattern/)
+- [Java 設計模式 轉接器模式 Adapter Pattern](https://matthung0807.blogspot.com/2019/11/java-adapter-pattern.html)
