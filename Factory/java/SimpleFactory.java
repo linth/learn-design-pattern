@@ -14,9 +14,9 @@
  limitations under the License.
  */
 
-package designPattern.Factory;
+package java;
 
-import designPattern.Factory.food.Food;
+import java.food.Food;
 
 /**
  * 簡單工廠模式

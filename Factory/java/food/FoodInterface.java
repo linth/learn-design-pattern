@@ -1,4 +1,4 @@
-package designPattern.Factory.food;
+package java.food;
 
 /**
  * 請多琢磨思考 interface class 部分

@@ -1,6 +1,6 @@
-package designPattern.Factory;
+package java;
 
-import designPattern.Factory.food.Food;
+import java.food.Food;
 
 public class JapanNoodle extends Food {
     @Override

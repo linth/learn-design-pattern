@@ -1,4 +1,4 @@
-package designPattern.Factory.food;
+package java.food;
 
 /**
  * abstract class: Food.

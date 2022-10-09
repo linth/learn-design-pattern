@@ -1,6 +1,6 @@
-package designPattern.Factory;
+package java;
 
-import designPattern.Factory.food.Food;
+import java.food.Food;
 
 /**
  * 工廠模式 (Factory design pattern)
