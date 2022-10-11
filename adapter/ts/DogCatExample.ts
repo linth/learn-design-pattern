@@ -3,9 +3,9 @@
  *  - Dog Cat Example.
  * 
  * 
- * 1) build interfaces for both.
- * 2) build a class to implement the interface.
- * 3) the adapter class named by Aadapter (A become to B).
+ * 1) build interfaces for both. (建立 interface A, B)
+ * 2) build a class to implement the interface. (實作 interface A)
+ * 3) the adapter class named by Aadapter (A become to B). (實作 interface B 去對應 A)
  * 
  * 
  * Reference:
