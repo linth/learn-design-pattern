@@ -9,17 +9,17 @@
  */
 
 
-interface Product {
+export interface Product {
     operation(): string;
 }
 
-class ConcreteProduct1 implements Product {
+export class ConcreteProduct1 implements Product {
     operation(): string {
         return 'Result: concrete product 1.';
     }
 }
 
-class ConcreteProduct2 implements Product {
+export class ConcreteProduct2 implements Product {
     operation(): string {
         return 'Result: concrete product 2.';
     }
@@ -27,7 +27,7 @@ class ConcreteProduct2 implements Product {
 
 
 // creator abstract class.
-abstract class Creator {    
+export abstract class Creator {    
     abstract factorMethod(): Product;
     someOperation(): string {
         const product = this.factorMethod();
@@ -35,13 +35,13 @@ abstract class Creator {
     }
 }
 
-class ConcreteCreator1 extends Creator {
+export class ConcreteCreator1 extends Creator {
     factorMethod(): Product {
         return new ConcreteProduct1();
     }
 }
 
-class ConcreteCreator2 extends Creator {
+export class ConcreteCreator2 extends Creator {
     factorMethod(): Product {
         return new ConcreteProduct2();
     }
@@ -51,7 +51,7 @@ class ConcreteCreator2 extends Creator {
 /**
  * client code 
  */
-function clientCode(creator: Creator) {
+export function clientCode(creator: Creator) {
     console.log('Client: I\'m not aware of the creator\'s class, but it still works.');
     console.log(creator.someOperation());
 }
