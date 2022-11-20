@@ -1,8 +1,8 @@
 /**
  * Factory design pattern with typescript.
- *  - [Product] 1 interface, several concrete classes 
- *  - [Creator] 1 abstract class, several concrete classes
- *  - [function] 1 function with argument: creator class.
+ *  - [Product] 建立 1 個 interface, several concrete classes 
+ *  - [Creator] 建立 1 個 abstract class, several concrete classes
+ *  - [function] 建立 1 個 function with argument: creator class.
  * 
  * Reference:
  *  - https://refactoring.guru/design-patterns/factory-method/typescript/example
