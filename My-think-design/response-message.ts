@@ -91,7 +91,7 @@ class AcceptedResponse<T> extends UnifiedResponse<T> {
      * request has been accepted for processing, but the processing has not been completed.
      */
     constructor() {
-        super('Accepted request, but not ', 202);
+        super('Accepted request, but the processing has not been completed.', 202);
     }
 }
 
