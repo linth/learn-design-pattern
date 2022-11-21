@@ -109,11 +109,11 @@ class Task2 implements ITask {
 let t1 = new Task1();
 let t2 = new Task2();
 
-let g = new ChainObject<Task1>(t1)
+let g = new ChainObject<ITask>(t1)
     .call()
     .exec_task();
 
-let g2 = new ChainObject<Task2>(t2)
+let g2 = new ChainObject<ITask>(t2)
     .call()
     .exec_task();
 
