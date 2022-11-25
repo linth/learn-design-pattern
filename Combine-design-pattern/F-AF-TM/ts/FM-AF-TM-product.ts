@@ -1,5 +1,10 @@
 /**
- * Factory method + abstact factory + template method.
+ * Factory Method (FM) + Abstract Factory (AF) + Template Method (TM) - product
+ *  - 透過使用 factory 只能用工廠製作出想要的 object.
+ * 
+ * 1. 建立一個 abstract class: product
+ * 2. 建立一個 abstract class: creator，裡面包 product 的 factory method
+ * 3. 建立繼承 creator 的 concrete class
  * 
  * 
  * 什麼時候需由 factory method 升級成 abstract factory
@@ -12,14 +17,15 @@
 
 
 export abstract class Product {
-
+    // abstract class.
 }
 
 export class ConcreteProduct extends Product {
-
+    // concrete class.
 }
 
 export abstract class Creator {
+    // abstract class.
     createProduct() {
         return this.factoryMethod();
     }
