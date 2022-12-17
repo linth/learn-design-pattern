@@ -15,13 +15,14 @@
  */
 
 {
-    // 執行命令的人
+    // 執行命令的人 (接收者/做事情的人/員工)
     class Receiver {
         action(str: string) {
             console.log(str);            
         }
     }
 
+    // 命令
     abstract class Command {
         receiver: Receiver;
 
@@ -42,7 +43,7 @@
         }
     }
 
-
+    // 要求執行命令 (秘書)
     class Invoker {
         commandList: Command[] = [];
 
