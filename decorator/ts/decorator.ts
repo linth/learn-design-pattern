@@ -1,5 +1,9 @@
 /**
  * decorator design pattern
+ *  - interface class: Component
+ *  - class: Decorator
+ *  - concrete class: ConcreteComponent, ConcreteDecorator
+ * 
  * 
  * Reference:
  *  - https://github.com/torokmark/design_patterns_in_typescript/tree/main/decorator
