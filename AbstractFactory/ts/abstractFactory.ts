@@ -1,5 +1,8 @@
 /**
  * abstract factory design pattern.
+ *  - 三層架構: interface, abstract, concrete class.
+ *  - concreteFactory class 含
+ * 
  * 
  * Reference:
  *  - https://github.com/torokmark/design_patterns_in_typescript/blob/main/abstract_factory/abstractFactory.ts
