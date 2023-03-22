@@ -70,7 +70,7 @@ class PersonBuilder {
   }
 }
 
-function main() {
+{
   const legacyPerson: LegacyPerson = {
     name: 'george',
     age: 33
@@ -81,10 +81,8 @@ function main() {
     .setLastName(person.lastName)
     .setAge(person.age)
     .build();
-  console.log(newPerson);  
+  console.log(newPerson); 
+  
+  // { firstName: 'george', lastName: undefined, age: 33 }
 }
-
-main(); 
-
-// { firstName: 'george', lastName: undefined, age: 33 }
 
