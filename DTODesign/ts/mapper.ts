@@ -3,6 +3,22 @@
  *  - User, UserDTO
  *  - UserMapper (User->UserDTO, UserDTO->User)
  * 
+ *    Frontend
+ *        |
+ *        V
+ *       API
+ *        |
+ *        v
+ *       DTO
+ *        |
+ *        V
+ *    Controller
+ *        |
+ *        V
+ *     Service
+ * 
+ * Reference:
+ *  - https://medium.com/@abdalrhmanalkraien/data-transfer-object-pattern-and-mapper-116508bc9df0
  */
 
 {
