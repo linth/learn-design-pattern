@@ -8,6 +8,9 @@
  * 
  * 每種模式下，編輯器的行為和界面都會有所不同。
  * 
+ * Reference:
+ *  - https://refactoring.guru/design-patterns/state
+ *  - https://www.youtube.com/watch?v=h8x6lBkwRUQ
  */
 
 
@@ -87,7 +90,7 @@ class Editor {
 
 {
   // 可以提供切換不同狀態 (意即切換模式)
-  
+
   const editor = new Editor();
 
   editor.handleMouseClick(); // 選擇模式 - 處理滑鼠點擊事件
