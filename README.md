@@ -16,8 +16,8 @@ learn design pattern by myself.
 
 ## 結構模式
 讓你合成類別或物件到大型的結構。
-- [ ] 裝飾者模式 (Decorator Pattern)
-- [ ] 轉接器模式 (Adapter Pattern)
+- [x] 裝飾者模式 (Decorator Pattern)
+- [x] 轉接器模式 (Adapter Pattern)
   - [Adapter](https://refactoring.guru/design-patterns/adapter/python/example#lang-features)
 - [ ] 表象模式 (Facade Pattern)
 - [ ] 合成模式 (Composite Pattern)
