@@ -38,7 +38,7 @@ learn design pattern by myself.
   - [Template Method](https://refactoring.guru/design-patterns/template-method)
 - [ ] 反覆器模式 (Iterator Pattern)
   - [Iterator](https://refactoring.guru/design-patterns/iterator/python/example#lang-features)
-- [ ] 狀態模式 (State Pattern)
+- [x] 狀態模式 (State Pattern)
 - [ ] 責任鏈模式 (Chain of Responsibility Pattern)
   - [Chain of Responsibility](https://refactoring.guru/design-patterns/chain-of-responsibility/python/)
 - [ ] 解譯器模式 (Interpreter Pattern)
