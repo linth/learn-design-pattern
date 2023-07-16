@@ -4,6 +4,7 @@
  * 
  * Reference:
  *  - https://medium.com/@pererikbergman/repository-design-pattern-e28c0f3e4a30
+ *  - https://www.youtube.com/watch?v=jHb-pBl0hz0
  */
 
 
