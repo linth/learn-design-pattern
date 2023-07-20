@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@types/node": "^20.4.2"
+  },
+  "dependencies": {
+    "zlib": "^1.0.5"
   }
 }
