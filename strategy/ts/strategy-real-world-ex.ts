@@ -140,6 +140,8 @@ import * as crypto from 'crypto';
 }
 
 // 實例3: 壓縮器
+import * as zlib from 'zlib';
+
 {
   interface Compressor {
     compress(data: string): string;
@@ -147,23 +149,29 @@ import * as crypto from 'crypto';
   
   class GzipCompressor implements Compressor {
     public compress(data: string): string {
-      return zlib.gzip(data);
+      // return zlib.gzip(data);
+      const buffer = Buffer.from(data);
+      const compressdData = zlib.gzipSync(buffer);
+      return compressdData.toString();
     }
   }
   
-  class Bzip2Compressor implements Compressor {
-    public compress(data: string): string {
-      return zlib.bzip2(data);
-    }
-  }
+  // TODO: something wrong.
+  // class Bzip2Compressor implements Compressor {
+  //   public compress(data: string): string {
+  //     const buffer = Buffer.from(data);
+  //     const compressedData = zlib.bzip2(buffer);
+  //     return compressedData.toString();
+  //   }
+  // }
   
   class CompressorFactory {
     public static getCompressor(algorithm: string): Compressor {
       switch (algorithm) {
         case "gzip":
           return new GzipCompressor();
-        case "bzip2":
-          return new Bzip2Compressor();
+        // case "bzip2":
+        //   return new Bzip2Compressor();
         default:
           throw new Error("Unknown algorithm");
       }
@@ -175,7 +183,7 @@ import * as crypto from 'crypto';
   const compressor = CompressorFactory.getCompressor("gzip");
   const compressedData = compressor.compress(data);
   
-  console.log(compressedData); // ZGVmYXVsdGRvbWFpbnRz
+  console.log(`compressedData ${compressedData}`); // ZGVmYXVsdGRvbWFpbnRz
 }
 
 // 實例4: 排序算法
