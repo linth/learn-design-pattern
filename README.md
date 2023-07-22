@@ -21,7 +21,8 @@ learn design pattern by myself.
   - [Adapter](https://refactoring.guru/design-patterns/adapter/python/example#lang-features)
 - [ ] 表象模式 (Facade Pattern)
 - [ ] 合成模式 (Composite Pattern)
-- [ ] 代理人模式 (Proxy Pattern)
+- [x] 代理人模式 (Proxy Pattern)
+  - [Proxy](https://refactoring.guru/design-patterns/proxy/typescript/example)
 - [ ] 橋接模式 (Bridge Pattern)
 - [ ] 享元模式 (Flyweight Pattern)
 
