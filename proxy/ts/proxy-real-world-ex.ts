@@ -1,7 +1,7 @@
 /**
  * proxy design pattern for real-world example.
  *  - Virtual Proxy for Heavy Object Initialization
- *  - 
+ *  - Remote Proxy for Network Requests
  * 
  * 
  * Proxy Design Pattern is a structural design pattern that provides a surrogate or placeholder for another object to control access to it. 
@@ -61,4 +61,58 @@
   
   image2.display();
   image2.display(); 
+}
+
+
+// 實際案例2: Remote Proxy for Network Requests
+// A remote proxy can be used to represent objects that reside in different address spaces, such as a remote server or a web service.
+{
+  interface IUser {
+    getName(): Promise<string>;
+  }
+  
+  // 遠端使用者
+  class RemoteUser implements IUser {
+    private userId: number;
+  
+    constructor(userId: number) {
+      this.userId = userId;
+    }
+  
+    async getName(): Promise<string> {
+      // Simulate a network request to fetch the user name
+      const response = await fetch(`https://www.google.com/users/${this.userId}`);
+      const data = await response.json();
+      return data.name;
+    }
+  }
+  
+  // 代理使用者
+  class UserProxy implements IUser {
+    private remoteUser: RemoteUser | null = null;
+    private userId: number;
+  
+    constructor(userId: number) {
+      this.userId = userId;
+    }
+  
+    async getName(): Promise<string> {
+      if (!this.remoteUser) {
+        this.remoteUser = new RemoteUser(this.userId);
+      }
+      return this.remoteUser.getName();
+    }
+  }
+  
+  // Usage
+  const user1 = new UserProxy(1);
+  
+  user1.getName().then((name) => {
+    console.log(name); // Output: Name fetched from the server for user with ID 1
+  });
+  
+  user1.getName().then((name) => {
+    console.log(name); // Output: Name fetched from cache for user with ID 1
+  });
+  
 }
