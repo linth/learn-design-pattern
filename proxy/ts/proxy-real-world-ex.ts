@@ -80,6 +80,7 @@
     }
   
     async getName(): Promise<string> {
+      // TODO: URL只是範例，執行會錯誤。
       // Simulate a network request to fetch the user name
       const response = await fetch(`https://www.google.com/users/${this.userId}`);
       const data = await response.json();
