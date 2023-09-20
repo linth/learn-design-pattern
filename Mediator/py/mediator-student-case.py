@@ -9,7 +9,9 @@ from abc import ABC, abstractmethod
 
 
 class ClassMonitor(ABC):
-    pass
+    @abstractmethod
+    def notify(self, sender, event):
+        pass
   
 class ConcreteClassMonitor(ClassMonitor):
   
