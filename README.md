@@ -43,7 +43,7 @@ learn design pattern by myself.
 - [ ] 責任鏈模式 (Chain of Responsibility Pattern)
   - [Chain of Responsibility](https://refactoring.guru/design-patterns/chain-of-responsibility/python/)
 - [ ] 解譯器模式 (Interpreter Pattern)
-- [ ] 中介者模式 (Mediator Pattern)
+- [x] 中介者模式 (Mediator Pattern)
 - [ ] 備忘錄模式 (Memento Pattern)
 - [ ] 訪問者模式 (Visitor Pattern)
 
