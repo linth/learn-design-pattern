@@ -17,28 +17,28 @@ export default class PubSub {
     }
 
     subscribe(event, fn) {
-        if (Array.isArray(this.subscribers[event])) {
-          this.subscribers[event] = [...this.subscribers[event], fn];
-        } else {
-          this.subscribers[event] = [fn];
-        }
-        return () => {
-          this.unsubscribe(event, fn);
-        };
+      if (Array.isArray(this.subscribers[event])) {
+        this.subscribers[event] = [...this.subscribers[event], fn];
+      } else {
+        this.subscribers[event] = [fn];
       }
-    
-      unsubscribe(event, fn) {
-        this.subscribers[event] = this.subscribers[event].filter(
-          (sub) => sub !== fn
-        );
+      return () => {
+        this.unsubscribe(event, fn);
+      };
+    }
+  
+    unsubscribe(event, fn) {
+      this.subscribers[event] = this.subscribers[event].filter(
+        (sub) => sub !== fn
+      );
+    }
+  
+    publish(event, data) {
+      if (Array.isArray(this.subscribers[event])) {
+        this.subscribers[event].forEach((sub) => {
+          sub(data);
+        });
       }
-    
-      publish(event, data) {
-        if (Array.isArray(this.subscribers[event])) {
-          this.subscribers[event].forEach((sub) => {
-            sub(data);
-          });
-        }
-        return false;
-      }
+      return false;
+    }
 }
