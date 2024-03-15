@@ -28,3 +28,6 @@
 ## 責任鏈模式 (Chain of responsibility)
 
 
+
+## 裝飾器模式 (Decorator Pattern)
+
