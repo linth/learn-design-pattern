@@ -9,7 +9,7 @@ class Singleton:
         return cls._instance
 
     def __init__(self):
-        if not hasattr(self, 'initialized'):
+        if not hasattr(self, 'initialized'): 
             self.initialized = True
             
     def some_method(self):
@@ -19,8 +19,9 @@ class Singleton:
 if __name__ == '__main__':
     s1 = Singleton()
     s2 = Singleton()
-    
+       
     print(s1 is s2) # False
     print(s1.some_method() is s2.some_method()) # True
+    print(s1.initialized, s2.initialized) # True, True 
     
     
