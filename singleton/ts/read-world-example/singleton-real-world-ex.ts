@@ -8,6 +8,7 @@
  * 
  *  - 案例 3: 數據庫連接池
  *  - 案例 4: 暫存
+ *    => 請參考 global-local-cache.ts
  * 
  */
 
@@ -66,35 +67,3 @@ class Singleton {
   }
 }
 
-
-// 案例 4： 暫存
-{
-  class Cache {
-    private static _instance: Cache | null = null;
-    private constructor() {}
-  
-    public static getInstance(): Cache {
-      if (Cache._instance === null) {
-        Cache._instance = new Cache();
-      }
-  
-      return Cache._instance;
-    }
-  
-    public set(key: string, value: any): void {
-      this._cache[key] = value;
-    }
-  
-    public get(key: string): any {
-      return this._cache[key];
-    }
-  
-    private _cache: { [key: string]: any } = {};
-  }
-
-  {
-    const cache = Cache.getInstance();
-    cache.set("key", "value");
-    const value = cache.get("key");
-  }
-}
