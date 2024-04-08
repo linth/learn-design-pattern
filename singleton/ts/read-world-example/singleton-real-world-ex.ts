@@ -1,6 +1,8 @@
 /**
  * Singleton 實際案例
  *  - 案例 1: 日誌紀錄器: 日誌記錄器是一種常見的應用程式組件，它用於記錄應用程式執行中的事件。日誌記錄器需要能夠在應用程式中的所有部分訪問，因此它通常實現了單例模式。
+ *    => 請參考 logger-ex.ts
+ * 
  *  - 案例 2: 配置文件: 配置文件是一種存儲應用程式配置信息的文件。配置文件通常需要能夠在應用程式中的所有部分訪問，因此它通常實現了單例模式。
  *  - 案例 3: 數據庫連接池
  *  - 案例 4: 暫存
@@ -23,27 +25,6 @@ class Singleton {
   const singleton = Singleton.getInstance();
   console.log(singleton); // Singleton {}
 }
-
-
-
-// 案例 1：日誌記錄器
-class Logger {
-  private static _instance: Logger | null = null;
-  private constructor() {}
-
-  public static getInstance(): Logger {
-    if (Logger._instance === null) {
-      Logger._instance = new Logger();
-    }
-
-    return Logger._instance;
-  }
-
-  public log(message: string): void {
-    console.log(message);
-  }
-}
-
 
 
 // 案例 2：配置文件
