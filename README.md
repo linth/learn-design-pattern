@@ -6,11 +6,11 @@ learn design pattern by myself.
 ## Creational Patterns, 生成模式
 只要牽涉到將物件實體化。這類模式都提供一個方法，將客戶從所需要實體化的物件中鬆綁出來。
 - [x] 獨體模式 (Singleton Pattern)
-  - [] 日誌紀錄器
-  - [] 配置文件
-  - [] 數據庫連接池
-  - [] 暫存
-  - [] 全域/區域設定
+  - [ ] 日誌紀錄器
+  - [ ] 配置文件
+  - [ ] 數據庫連接池
+  - [ ] 暫存
+  - [ ] 全域/區域設定
 - [x] 工廠方法模式 (Factory Method Pattern)
 - [x] 抽象工廠模式 (Abstract Factory Pattern)
   - [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory/python/example#lang-features)
