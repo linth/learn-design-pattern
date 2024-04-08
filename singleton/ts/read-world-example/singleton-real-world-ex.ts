@@ -4,6 +4,8 @@
  *    => 請參考 logger-ex.ts
  * 
  *  - 案例 2: 配置文件: 配置文件是一種存儲應用程式配置信息的文件。配置文件通常需要能夠在應用程式中的所有部分訪問，因此它通常實現了單例模式。
+ *    => 請參考 config-ex.ts
+ * 
  *  - 案例 3: 數據庫連接池
  *  - 案例 4: 暫存
  * 
@@ -24,31 +26,6 @@ class Singleton {
 {
   const singleton = Singleton.getInstance();
   console.log(singleton); // Singleton {}
-}
-
-
-// 案例 2：配置文件
-class Config {
-  private static _instance: Config | null = null;
-  private constructor() {}
-
-  public static getInstance(): Config {
-    if (Config._instance === null) {
-      Config._instance = new Config();
-    }
-
-    return Config._instance;
-  }
-
-  public get(key: string): string {
-    return this._config[key];
-  }
-
-  public set(key: string, value: string): void {
-    this._config[key] = value;
-  }
-
-  private _config: { [key: string]: string } = {};
 }
 
 
