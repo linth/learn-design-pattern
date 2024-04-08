@@ -1,5 +1,5 @@
 /**
- * Singleton simple example.
+ * [] Singleton simple example.
  * 
  * Reference:
  *  - https://fireship.io/lessons/typescript-design-patterns/
@@ -69,8 +69,10 @@
 
   console.log(`=== the information of global setting: ===`);
   console.log(`Mode: ${gs.mode}, Power: ${gs.power}`);
-
+  
+  
   console.log();
+
   
   console.log(`=== the information of local setting: ===`);
   console.log(`Font size: ${ls.fontSize}, Font type: ${ls.fontType}`);
