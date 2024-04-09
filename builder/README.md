@@ -1,5 +1,6 @@
 # builder 設計模式
 > 跟 pipeline pattern有點類似
+> 使用 builder 可以使用類似chain方式串接步驟, 可讀性跟維護性較高。
 
 ## 實際案例
 
