@@ -31,3 +31,4 @@ operation (tasks) -> process -> pipeline
 
 # Reference
 - [[Software Architecture] The Pipeline Design Pattern — From Zero to Hero](https://scribe.rip/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60)
+- [refactoring.guru - Builder](https://refactoring.guru/design-patterns/builder)
