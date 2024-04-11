@@ -1,0 +1,5 @@
+/**
+ * CoR design pattern.
+ * 
+ */
+
