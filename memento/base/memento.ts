@@ -4,6 +4,13 @@
  *  - Originator
  *  - Caretaker
  * 
+ * 應用場景:
+ *  - 遊戲存檔功能, 下次登入後從上次地方繼續遊戲
+ *  - 棋盤悔棋
+ *  - 允許使用者錯誤或不確定的操作, 能恢復之前狀態
+ *  - ctrl + z
+ * 
+ * 
  * Reference:
  *  - https://refactoring.guru/design-patterns/memento
  */
