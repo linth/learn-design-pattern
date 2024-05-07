@@ -34,9 +34,9 @@ learn design pattern by myself.
 
 ## Behavioral Patterns, 行為模式
 模述類別和物件如何互動，以及各自的責任。
-- [ ] 策略模式 (Strategy Pattern)
+- [x] 策略模式 (Strategy Pattern)
   - [Strategy](https://refactoring.guru/design-patterns/strategy/python/example#lang-features)
-- [ ] 觀察者模式 (Observer Pattern)
+- [x] 觀察者模式 (Observer Pattern)
   - [Observer](https://refactoring.guru/design-patterns/observer/python/example#lang-features)
 - [ ] 命令模式 (Command Pattern)
   - [Command](https://refactoring.guru/design-patterns/command/python/example#lang-features)
@@ -45,11 +45,11 @@ learn design pattern by myself.
 - [ ] 反覆器模式 (Iterator Pattern)
   - [Iterator](https://refactoring.guru/design-patterns/iterator/python/example#lang-features)
 - [x] 狀態模式 (State Pattern)
-- [ ] 責任鏈模式 (Chain of Responsibility Pattern)
+- [x] 責任鏈模式 (Chain of Responsibility Pattern)
   - [Chain of Responsibility](https://refactoring.guru/design-patterns/chain-of-responsibility/python/)
 - [ ] 解譯器模式 (Interpreter Pattern)
 - [x] 中介者模式 (Mediator Pattern)
-- [ ] 備忘錄模式 (Memento Pattern)
+- [x] 備忘錄模式 (Memento Pattern)
 - [ ] 訪問者模式 (Visitor Pattern)
 
 
