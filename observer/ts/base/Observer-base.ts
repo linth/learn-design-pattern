@@ -21,7 +21,7 @@
       }
     }
 
-    notifyAllObservers(observer: Observer): void {
+    notifyAllObservers(): void {
       this.observerList.forEach(observer => {
         observer.update();
       });
@@ -34,7 +34,7 @@
 
   class TwitterNewsSubject extends Subject {
     pushNews(): void {
-      this.notifyAllObservers;
+      this.notifyAllObservers();
     }
   }
 
@@ -51,8 +51,11 @@
   }
 
   const s = new TwitterNewsSubject();
-  const to = new TwitterNewsSubject();
+
+  const to = new TwitterObserver();
   const go = new GeorgeObserver();
 
+  s.add(to);
+  s.add(go);
   s.pushNews();
 }
