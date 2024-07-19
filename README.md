@@ -70,3 +70,4 @@ learn design pattern by myself.
 - [youtube - 10 Architecture Patterns Used In Enterprise Software Development Today](https://www.youtube.com/watch?v=BrT3AO8bVQY)
 - https://refactoring.guru/design-patterns
 - http://corrupt003-design-pattern.blogspot.com/2017/02/blog-post.html
+- [10 of the Most Used Design Patterns in TypeScript](https://blog.stackademic.com/10-of-the-most-used-design-patterns-in-typescript-0dd52a16db99)
