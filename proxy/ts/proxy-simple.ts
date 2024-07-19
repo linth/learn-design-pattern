@@ -3,6 +3,7 @@
  * 
  * Reference:
  *  - https://refactoring.guru/design-patterns/proxy/typescript/example
+ *  - https://blog.stackademic.com/10-of-the-most-used-design-patterns-in-typescript-0dd52a16db99
  */
 
 {
