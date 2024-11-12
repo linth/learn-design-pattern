@@ -6,28 +6,34 @@
  */
 
 {
-  // 產品資訊
-  class ProductOrder {
+  interface Product {
     oldPrice: number;
     userId: number;
     productId: number;
+  }
 
-    constructor(oldPrice: number, userId: number, productId: number) {
-      this.oldPrice = oldPrice;
-      this.userId = userId;
-      this.productId = productId;
+  // 產品資訊
+  class ProductOrder implements Product {
+    protected _oldPrice: number;
+    protected _userId: number;
+    protected _productId: number;
+
+    constructor(o: number, u: number, p: number) {
+      this._oldPrice = o;
+      this._userId = u;
+      this._productId = p;
     }
 
-    getOldPrice(): number {
-      return this.oldPrice;
+    get oldPrice(): number {
+      return this._oldPrice;
     }
 
-    getUserId(): number {
-      return this.userId;
+    get userId(): number {
+      return this._userId;
     }
 
-    getProductId(): number {
-      return this.productId;
+    get productId(): number {
+      return this._productId;
     }
   }
 
@@ -39,7 +45,7 @@
   // 無折扣
   class NormalActivityStrategy implements ActivityStratgy {
     computePrice(productOrder: ProductOrder): number {
-      return productOrder.getOldPrice();
+      return productOrder.oldPrice;
     }
   }
 
@@ -52,7 +58,7 @@
     }
 
     computePrice(productOrder: ProductOrder): number {
-      return productOrder.getOldPrice() * this.rate;
+      return productOrder.oldPrice * this.rate;
     }
   }
 
@@ -65,8 +71,8 @@
     }
 
     computePrice(productOrder: ProductOrder): number {
-      if (productOrder.getOldPrice() > this.voucher) {
-        return productOrder.getOldPrice() - this.voucher;
+      if (productOrder.oldPrice > this.voucher) {
+        return productOrder.oldPrice - this.voucher;
       } else {
         return 0;
       }
@@ -92,17 +98,17 @@
   const nas = new NormalActivityStrategy();
   const pc1 = new PromotionContext(nas);
   finalPrice = pc1.executeStrategy(po);
-  console.log('正常價格: ', finalPrice);
+  console.log('正常價格: ', finalPrice); // 正常價格:  800
   
   // 打折優惠
   const das = new DiscountActivityStrategy(0.7);
   const pc2 = new PromotionContext(das);
   finalPrice = pc2.executeStrategy(po);
-  console.log('打折優惠: ', finalPrice);
+  console.log('打折優惠: ', finalPrice); // 打折優惠:  560
 
   // 優惠卷
   const vas = new VoucherActivityStrategy(300);
   const pc3 = new PromotionContext(vas);
   finalPrice = pc3.executeStrategy(po);
-  console.log('優惠卷價格: ', finalPrice);
+  console.log('優惠卷價格: ', finalPrice); // 優惠卷價格:  500
 }
