@@ -12,6 +12,9 @@
 
 Reference:
     - https://ithelp.ithome.com.tw/articles/10236359
+    - https://www.jyt0532.com/2020/03/24/dip/
+    - https://medium.com/@yhosutun2491/design-pattern-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87-dependency-inversion-principle-dip-725f29deca6f
+    - https://www.appcoda.com.tw/dependency-inversion-principle/
 '''
 
 class Payment:
