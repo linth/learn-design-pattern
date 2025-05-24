@@ -3,6 +3,9 @@
  *  - 當你需要使用不同的支付系統時，每個系統都有自己的API，但是它們的接口不同，這時候可以使用轉接器模式來統一它們的接口，讓你的代碼更加通用。
  * 
  * TODO: more example.
+ * 
+ * Reference:
+ *  - https://refactoring.guru/design-patterns/adapter
  */
 
 {
@@ -11,14 +14,14 @@
     pay(amount: number): void;
   }
 
-  // 第一個支付系統
+  // 第一個支付系統 A
   class PaymentSystemA {
     makePayment(price: number) {
       console.log(`支付 ${price} 元 (使用支付系統A)`);
     }
   }
 
-  // 第二個支付系統
+  // 第二個支付系統 B
   class PaymentSystemB {
     payMoney(amount: number) {
       console.log(`支付 ${amount} 元 (使用支付系統B)`);
