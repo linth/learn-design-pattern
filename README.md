@@ -2,6 +2,22 @@
 learn design pattern by myself.
 
 
+## 編譯單一檔案
+```
+// 使用 tsc 編譯單一檔案, 這會產生同名的 example.js
+tsc example.ts
+
+// javascript
+node example.js
+```
+
+
+## 直接執行 ts
+```
+// 直接執行 ts
+npx ts-node example.ts
+```
+
 
 ## Creational Patterns, 生成模式
 只要牽涉到將物件實體化。這類模式都提供一個方法，將客戶從所需要實體化的物件中鬆綁出來。
