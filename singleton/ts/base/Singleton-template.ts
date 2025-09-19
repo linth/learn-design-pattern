@@ -7,9 +7,7 @@
   class Singleton {
     private static instance: Singleton | null = null;
 
-    constructor() {
-
-    }
+    constructor() {}
 
     // 獲取 new 出來的 instance.
     public static getInstance(): Singleton {
