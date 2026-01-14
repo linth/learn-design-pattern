@@ -83,6 +83,8 @@
     }
   }
 
+  // 使用 OS 上的 kernel 來執行轉接器，創立 kernel 後，開始執行 adapter
+  // PLCAdapter -> SiemensAdapter, MitsubishiAdapter -> SiemensPLC, MitsubishiPLC
   class Kernel {
     private adaptor: PLCAdapter;
 
