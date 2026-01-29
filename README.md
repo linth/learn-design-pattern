@@ -63,7 +63,7 @@ java Example
   - [Observer](https://refactoring.guru/design-patterns/observer/python/example#lang-features)
 - [ ] 命令模式 (Command Pattern)
   - [Command](https://refactoring.guru/design-patterns/command/python/example#lang-features)
-- [ ] 樣板方法模式 (Template Method Pattern)
+- [x] 樣板方法模式 (Template Method Pattern)
   - [Template Method](https://refactoring.guru/design-patterns/template-method)
 - [ ] 反覆器模式 (Iterator Pattern)
   - [Iterator](https://refactoring.guru/design-patterns/iterator/python/example#lang-features)
