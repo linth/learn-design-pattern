@@ -35,9 +35,6 @@ Ensure you have `ts-node` installed, or compile with `tsc`.
 npx ts-node client.ts
 ```
 
-
-
-
 實務關鍵判斷：什麼時候該用 State Pattern？
 ✅ 適合
 - 狀態 ≥ 3
