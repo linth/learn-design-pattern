@@ -16,7 +16,54 @@
 定義一個統一的介面 `PLCAdapter`，強制所有廠商的轉接器都必須實作 `startStation` 方法。轉接器負責將 Kernel 的通用需求轉換為特定廠商的通訊指令。
 
 ### 2. 簡單工廠模式 (Simple Factory Pattern)
-使用 `PLCFactory` 來負責建立對應的轉接器實體。Kernel 只需要告訴工廠目前需要的 PLC 類型 (如 'SIEMENS' 或 'MITSUBISHI')，而不需要知道背後具體是如何初始化與裝配的。
+使用 `PLCFactory` 來負責建立對應的轉接器實體。Kernel 只需要告訴工廠目前需要的 PLC 類型 (如 `SIEMENS` 或 `MITSUBISHI`)，而不需要知道背後具體是如何初始化與裝配的。
+
+## 架構圖 (UML Diagram)
+
+![PLC-adapter](./image.png)
+
+```mermaid
+classDiagram
+    class Kernel {
+        -adaptor: PLCAdapter
+        +run(id: string)
+    }
+
+    class PLCFactory {
+        +createAdapter(type: PLCType) PLCAdapter
+    }
+
+    class PLCAdapter {
+        <<interface>>
+        +startStation(stationId: string)
+    }
+
+    class MitsubishiAdapter {
+        -plc: MitsubishiPLC
+        +startStation(stationId: string)
+    }
+
+    class SiemensAdapter {
+        -plc: SiemensPLC
+        +startStation(stationId: string)
+    }
+
+    class MitsubishiPLC {
+        +sendCommand(command, address)
+    }
+
+    class SiemensPLC {
+        +writeNode(nodePath, value)
+    }
+
+    Kernel ..> PLCAdapter : uses
+    Kernel ..> PLCFactory : uses to create
+    PLCFactory ..> PLCAdapter : creates
+    MitsubishiAdapter ..|> PLCAdapter : implements
+    SiemensAdapter ..|> PLCAdapter : implements
+    MitsubishiAdapter o-- MitsubishiPLC : adapts
+    SiemensAdapter o-- SiemensPLC : adapts
+```
 
 ## 檔案架構說明
 
