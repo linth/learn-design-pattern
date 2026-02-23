@@ -140,6 +140,9 @@ console.log(cAdapter.transform(vendorCData))
 ```
 
 ### 7. 輸出結果（統一格式）
+統一成 unifiedLight 後，就可以做統一的處理
+其實也就是ETL當中的Tranform部分
+
 ```typescript
 { id: 'A-1001', isOn: true,  brightness: 80 }
 { id: 'B-5566', isOn: true,  brightness: 60 }
