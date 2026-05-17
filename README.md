@@ -35,10 +35,14 @@ java Example
   - [ ] 暫存
   - [ ] 全域/區域設定
 - [x] 工廠方法模式 (Factory Method Pattern)
+  - [Python 範例](Factory/py/)
+  - [C# 範例](Factory/cs/)
 - [x] 抽象工廠模式 (Abstract Factory Pattern)
   - [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory/python/example#lang-features)
 - [x] 建立者模式 (Builder Pattern)
   - [Builder](https://refactoring.guru/design-patterns/builder/python/example#lang-features)
+  - [Python 範例](builder/py/)
+  - [C# 範例](builder/cs/)
 - [ ] 原型模式 (Prototype Pattern)
 
 
@@ -47,6 +51,8 @@ java Example
 - [x] 裝飾者模式 (Decorator Pattern)
 - [x] 轉接器模式 (Adapter Pattern)
   - [Adapter](https://refactoring.guru/design-patterns/adapter/python/example#lang-features)
+  - [Python 範例](adapter/py/)
+  - [C# 範例](adapter/cs/)
 - [ ] 表象模式 (Facade Pattern)
 - [ ] 合成模式 (Composite Pattern)
 - [x] 代理人模式 (Proxy Pattern)
