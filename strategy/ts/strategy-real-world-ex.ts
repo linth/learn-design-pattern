@@ -1,193 +1,114 @@
 /**
- * strategy design pattern for real-world example.
- *  - 文件格式轉換器
- *  - 加密器
- *  - 壓縮器
- *  - 排序算法
- *  - 搜索算法
- * 
- * 
- * Reference:
- *  - https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
+ * 策略模式 (Strategy Design Pattern) - 真實世界範例
+ * 展示策略模式在五種常見場景的應用：
+ * 1. 文件格式轉換器
+ * 2. 加密器
+ * 3. 壓縮器
+ * 4. 排序演算法
+ * 5. 搜尋演算法
  */
 
-
-// 實例1: 文件格式轉換器
+// ============================================================
+// 實例 1：文件格式轉換器
+// 不同格式（Markdown、HTML、純文字）的格式化行為被封裝成策略
+// ============================================================
 {
+  /** [策略介面] 文字格式化器 */
   interface Formatter {
     format(data: string): string;
   }
 
+  /** [具體策略] Markdown 格式化 */
   class MarkdownFormatter implements Formatter {
-    public format(data: string): string {
-      return data.replace("/\n/g", "\n\n");
+    format(data: string): string {
+      return data.replace(/\n/g, '\n\n');
     }
   }
 
+  /** [具體策略] HTML 格式化 */
   class HTMLFormatter implements Formatter {
     format(data: string): string {
-      return data.replace("/\n/g", "<br>");
+      return `<p>${data.replace(/\n/g, '<br>')}</p>`;
     }
   }
 
+  /** [具體策略] 純文字格式化 */
   class TextFormatter implements Formatter {
-    public format(data: string): string {
+    format(data: string): string {
       return data;
     }
   }
 
-  class FormatterFactory {
-    public static getFormatter(format: string): Formatter {
-      switch (format) {
-        case 'markdown':
-          return new MarkdownFormatter();
-        case 'html': 
-          return new HTMLFormatter();
-        case 'text':
-          return new TextFormatter();
-        default:
-          throw new Error('Unknown  format');
-      }
-    }
-  }
-
-  const data = "this is some text.";
-  const markdownFormatter = FormatterFactory.getFormatter("markdown");
-  const htmlFormatter = FormatterFactory.getFormatter("html");
-  const textFormatter = FormatterFactory.getFormatter("text");
-
-  // TODO: 尚未處理<p></p>
-  console.log(markdownFormatter.format(data)); // This is some text.
-  console.log(htmlFormatter.format(data)); // <p>This is some text.</p>
-  console.log(textFormatter.format(data)); // This is some text.
+  const data = 'Hello World\nThis is strategy pattern.';
+  console.log('Markdown:', new MarkdownFormatter().format(data));
+  console.log('HTML:', new HTMLFormatter().format(data));
+  console.log('Text:', new TextFormatter().format(data));
 }
 
-
-// 實例2: 加密器
+// ============================================================
+// 實例 2：加密器（不同演算法封裝成策略）
+// ============================================================
 import * as crypto from 'crypto';
 
-// TODO: code refactory crypto.
-{ 
+{
+  /** [策略介面] 加密器 */
   interface Encryptor {
     encrypt(data: string): Buffer;
   }
-  
+
+  /** [具體策略] MD5 加密 */
   class MD5Encryptor implements Encryptor {
-    public encrypt(data: string): Buffer {
-      return crypto.createHash('md5')
-        .update(data)
-        .digest();
-        // .toString();
+    encrypt(data: string): Buffer {
+      return crypto.createHash('md5').update(data).digest();
     }
   }
-  
+
+  /** [具體策略] SHA1 加密 */
   class SHA1Encryptor implements Encryptor {
-    public encrypt(data: string): Buffer {
-      return crypto.createHash('sha1')
-        .update(data)
-        .digest();
-        // .toString();
+    encrypt(data: string): Buffer {
+      return crypto.createHash('sha1').update(data).digest();
     }
   }
-  
+
+  /** [具體策略] SHA256 加密 */
   class SHA256Encryptor implements Encryptor {
-    public encrypt(data: string): Buffer {
-      return crypto.createHash('sha256')
-        .update(data)
-        .digest();
-        // .toString();
-    }
-  }
-  
-  class EncryptorFactory {
-    public static getEncryptor(algorithm: string): Encryptor {
-      switch (algorithm) {
-        case "md5":
-          return new MD5Encryptor();
-        case "sha1":
-          return new SHA1Encryptor();
-        case "sha256":
-          return new SHA256Encryptor();
-        default:
-          throw new Error("Unknown algorithm");
-      }
+    encrypt(data: string): Buffer {
+      return crypto.createHash('sha256').update(data).digest();
     }
   }
 
-  const data = "This is some text.";
-
-  const md5_res = new MD5Encryptor();
-  console.log(`md5: ${md5_res.encrypt(data)}`);
-  const md5Encryptor = EncryptorFactory.getEncryptor("md5");
-  console.log(md5Encryptor.encrypt(data));
-  
-
-  const sha1_res = new SHA1Encryptor();
-  console.log(`sha1: ${sha1_res.encrypt(data)}`);
-  const sha1Encryptor = EncryptorFactory.getEncryptor("sha1");
-  console.log(sha1Encryptor.encrypt(data));
-  
-  
-  const sha256_res = new SHA256Encryptor();
-  console.log(`sha256: ${sha256_res.encrypt(data)}`);
-  const sha256Encryptor = EncryptorFactory.getEncryptor("sha256");
-  console.log(sha256Encryptor.encrypt(data));
-  
-
-  // console.log(md5Encryptor.encrypt(data)); // 5eb63bbbe01eeed093cb22bb8f5acdc327ba613b
-  // console.log(sha1Encryptor.encrypt(data)); // 5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8
-  // console.log(sha256Encryptor.encrypt(data)); // ebcb85710311535c185c9580194508841985198843b84695e792d4b0c4048d34
+  const text = 'Hello Strategy Pattern';
+  console.log('\nMD5:', new MD5Encryptor().encrypt(text).toString('hex'));
+  console.log('SHA1:', new SHA1Encryptor().encrypt(text).toString('hex'));
+  console.log('SHA256:', new SHA256Encryptor().encrypt(text).toString('hex'));
 }
 
-// 實例3: 壓縮器
+// ============================================================
+// 實例 3：壓縮器（不同壓縮演算法封裝成策略）
+// ============================================================
 import * as zlib from 'zlib';
 
 {
+  /** [策略介面] 壓縮器 */
   interface Compressor {
-    compress(data: string): string;
+    compress(data: string): Buffer;
   }
-  
+
+  /** [具體策略] Gzip 壓縮 */
   class GzipCompressor implements Compressor {
-    public compress(data: string): string {
-      // return zlib.gzip(data);
-      const buffer = Buffer.from(data);
-      const compressdData = zlib.gzipSync(buffer);
-      return compressdData.toString();
+    compress(data: string): Buffer {
+      return zlib.gzipSync(Buffer.from(data));
     }
   }
-  
-  // TODO: something wrong.
-  // class Bzip2Compressor implements Compressor {
-  //   public compress(data: string): string {
-  //     const buffer = Buffer.from(data);
-  //     const compressedData = zlib.bzip2(buffer);
-  //     return compressedData.toString();
-  //   }
-  // }
-  
-  class CompressorFactory {
-    public static getCompressor(algorithm: string): Compressor {
-      switch (algorithm) {
-        case "gzip":
-          return new GzipCompressor();
-        // case "bzip2":
-        //   return new Bzip2Compressor();
-        default:
-          throw new Error("Unknown algorithm");
-      }
+
+  /** [具體策略] Deflate 壓縮 */
+  class DeflateCompressor implements Compressor {
+    compress(data: string): Buffer {
+      return zlib.deflateSync(Buffer.from(data));
     }
   }
-  
-  const data = "This is some text.";
-  
-  const compressor = CompressorFactory.getCompressor("gzip");
-  const compressedData = compressor.compress(data);
-  
-  console.log(`compressedData ${compressedData}`); // ZGVmYXVsdGRvbWFpbnRz
+
+  const text = 'This is some text to compress.';
+  console.log('\nGzip 壓縮:', new GzipCompressor().compress(text).length, 'bytes');
+  console.log('Deflate 壓縮:', new DeflateCompressor().compress(text).length, 'bytes');
 }
-
-// 實例4: 排序算法
-
-
-// 實例5: 搜索算法
-
