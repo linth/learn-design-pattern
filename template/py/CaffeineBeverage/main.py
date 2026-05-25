@@ -1,39 +1,26 @@
-from template.py.CaffeineBeverage.Tea import Tea
-from template.py.CaffeineBeverage.Coffee import Coffee, BlueMountainCoffee, Latte
+'''樣板方法模式執行範例'''
+import sys
 
-# FIXME: some import issue should be solved ASAP.
 
 class Process:
-    def selected_condition(self):
-        q = input('Tea or Coffee?')
-        print(f'The customer wants a {q}, please.')
-        is_milk = input('Would you like milk and sugar with your coffee/tea (y/n)?')
-        print(f'your anwser: {is_milk}')
-        self.is_tea_or_coffee(stuff=q)
+    '''飲料製作流程選擇器'''
 
-    def is_tea_or_coffee(self, **kwargs):
-        if kwargs['stuff'] == 'tea':
-            self.make_tea()
-        elif kwargs['stuff'] == 'coffee':
-            self.make_coffee()
+    @staticmethod
+    def selected_condition():
+        choice = input('請選擇飲料：1. 咖啡  2. 茶  ')
+        if choice == '1':
+            from Coffee import Coffee
+            coffee = Coffee()
+            coffee.prepare_recipe()
+        elif choice == '2':
+            from Tea import Tea
+            tea = Tea()
+            tea.prepare_recipe()
         else:
-            print('Not found.')
-
-    def make_coffee(self):
-        c = Coffee()
-        c.prepare_recipe()
-
-    def make_tea(self):
-        t = Tea()
-        t.prepare_recipe()
+            print('無效選擇')
+            sys.exit()
 
 
 if __name__ == '__main__':
-    # b = BlueMountainCoffee()
-    # b.prepare_recipe()
-
-    # l = Latte()
-    # l.prepare_recipe()
-
-    p = Process()
-    p.selected_condition()
+    process = Process()
+    process.selected_condition()

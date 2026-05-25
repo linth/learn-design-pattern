@@ -1,27 +1,22 @@
 '''
-Template Method - Abstract class.
-
-Reference:
-    - https://refactoring.guru/design-patterns/template-method/python/example
+樣板方法模式 - 抽象超類別範例 (Refactoring Guru)
+定義演算法骨架，將部分步驟延遲到子類別實作。
 '''
 
 from abc import ABC, abstractmethod
 
 
-class AbstractClass(ABC):    
-    '''
-    The Abstract Class defines a template method that contains a skeleton of
-    some algorithm, composed of calls to (usually) abstract primitive
-    operations.
+class AbstractClass(ABC):
+    """
+    [抽象超類別] 定義了樣板方法與基本操作。
+    子類別必須實作抽象方法，並可選擇性地覆寫掛鉤。
+    """
 
-    Concrete subclasses should implement these operations, but leave the
-    template method itself intact.
-    '''
-    
-    def template_method(self):
-        '''
-        The template method defines the skeleton of an algorithm.
-        '''
+    def template_method(self) -> None:
+        """
+        樣板方法：定義演算法骨架。
+        由固定步驟（base operations）與可變步驟（abstract operations）組成。
+        """
         self.base_operation1()
         self.required_operations1()
         self.base_operation2()
@@ -29,36 +24,34 @@ class AbstractClass(ABC):
         self.required_operations2()
         self.base_operation3()
         self.hook2()
-        
-    
-    # These operations already have implementations.
-    def base_operation1(self):
-        print("AbstractClass says: I am doing the bulk of the work")
 
-    def base_operation2(self):
-        print("AbstractClass says: But I let subclasses override some operations")
+    # ---------- 共用邏輯（所有子類別相同）----------
 
-    def base_operation3(self):
-        print("AbstractClass says: But I am doing the bulk of the work anyway")
+    def base_operation1(self) -> None:
+        print('AbstractClass: 執行基礎操作 1')
 
+    def base_operation2(self) -> None:
+        print('AbstractClass: 執行基礎操作 2')
 
-    # These operations have to be implemented in subclasses.
-    @abstractmethod
-    def required_operations1(self):
-        pass
+    def base_operation3(self) -> None:
+        print('AbstractClass: 執行基礎操作 3')
+
+    # ---------- 抽象方法（子類別必須實作）----------
 
     @abstractmethod
-    def required_operations2(self):
+    def required_operations1(self) -> None:
         pass
 
-    # These are "hooks." Subclasses may override them, but it's not mandatory
-    # since the hooks already have default (but empty) implementation. Hooks
-    # provide additional extension points in some crucial places of the
-    # algorithm.
-
-    def hook1(self):
+    @abstractmethod
+    def required_operations2(self) -> None:
         pass
 
-    def hook2(self):
+    # ---------- 掛鉤（子類別可選擇性覆寫）----------
+
+    def hook1(self) -> None:
+        '''掛鉤 1：預設為空，子類別可覆寫'''
         pass
-    
+
+    def hook2(self) -> None:
+        '''掛鉤 2：預設為空，子類別可覆寫'''
+        pass

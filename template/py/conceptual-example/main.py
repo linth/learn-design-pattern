@@ -1,29 +1,20 @@
-'''
-Template Method - main class.
-
-Reference:
-    - https://refactoring.guru/design-patterns/template-method/python/example
-'''
-
+'''樣板方法模式 - 用戶端範例 (Refactoring Guru)'''
 from AbstractClass import AbstractClass
 from ConcreteClass import ConcreteClass1, ConcreteClass2
 
 
-def client_code(abstract_class: AbstractClass):
+def client_code(abstract_class: AbstractClass) -> None:
     """
-    The client code calls the template method to execute the algorithm. Client
-    code does not have to know the concrete class of an object it works with, as
-    long as it works with objects through the interface of their base class.
+    用戶端程式碼呼叫樣板方法即可執行完整的演算法，
+    不需關心具體子類別的實作細節。
     """
     abstract_class.template_method()
-    
-    
-    
-if __name__ == '__main__':
-    print("Same client code can work with different subclasses:")
-    client_code(ConcreteClass1())
-    print("")
 
-    print("Same client code can work with different subclasses:")
+
+if __name__ == '__main__':
+    print('使用 ConcreteClass1:')
+    client_code(ConcreteClass1())
+    print()
+
+    print('使用 ConcreteClass2:')
     client_code(ConcreteClass2())
-    

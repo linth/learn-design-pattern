@@ -65,7 +65,7 @@ class Tea extends Beverage {
   constructor(wantsCondiments = true) {
     super();
     this._wantsCondiments = wantsCondiments;
-  }
+  } 
 
   brew() {
     console.log("[Tea] 將嚴選茶葉浸泡於沸水中");

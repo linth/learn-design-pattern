@@ -1,47 +1,40 @@
-from design_pattern.head_first_design_pattern.template_method_pattern.CaffeineBeverage.CaffeineBeverage import CaffeineBeverage
+'''咖啡類別 - 樣板方法模式具體實作'''
+
+from CaffeineBeverage import CaffeineBeverage
 
 
 class Coffee(CaffeineBeverage):
-    def __init__(self):
-        pass
+    '''[具體類別] 咖啡'''
 
-    def prepare_recipe(self):
-        self.boil_water()
-        self.brew_coffee_grinds()
-        self.pour_in_cup()
-        self.add_sugar_and_milk()
-        self.hook()
-        if self.customer_want_conditions() is True:
-            """
-            如果客戶想要加配料，才會呼叫。
-            """
-            self.addCondiments()
+    def brew(self):
+        print('透過濾網滴濾咖啡豆萃取液')
 
-    def brew_coffee_grinds(self):
-        print('brew_coffee_grinds')
+    def add_condiments(self):
+        print('加入糖與牛奶')
 
-    def add_sugar_and_milk(self):
-        print('add_sugar_and_milk')
-
-    def hook(self):
-        """
-        預設不做事的具象方法，稱為hook (掛勾)。
-        次類別可以視情況決定要不要利用override的方式來覆蓋。
-        """
-        pass
-
-    def customer_want_conditions(self):
-        return True
-
-    def addCondiments(self):
-        print('addCondiments...')
+    def customer_wants_condiments(self):
+        '''覆寫掛鉤：詢問使用者是否要加糖與牛奶'''
+        answer = input('請問要加糖與牛奶嗎？(y/n) ')
+        return answer.lower() == 'y'
 
 
 class BlueMountainCoffee(Coffee):
-    def hook(self):
-        print('end of hook...')
+    '''[具體類別] 藍山咖啡（展示掛鉤的彈性）'''
+
+    def brew(self):
+        print('以手沖方式萃取藍山咖啡豆')
+
+    def customer_wants_condiments(self):
+        '''藍山咖啡建議喝原味，預設不加料'''
+        print('藍山咖啡建議喝原味，不加料')
+        return False
 
 
 class Latte(Coffee):
-    def customer_want_conditions(self):
-        return False
+    '''[具體類別] 拿鐵咖啡'''
+
+    def brew(self):
+        print('沖煮濃縮咖啡並混合大量熱牛奶')
+
+    def add_condiments(self):
+        print('在奶泡上拉花')

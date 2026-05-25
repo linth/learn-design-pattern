@@ -1,38 +1,29 @@
 '''
-Template Method - Concrete class.
-
-Reference:
-    - https://refactoring.guru/design-patterns/template-method/python/example
+樣板方法模式 - 具體子類別範例 (Refactoring Guru)
+實作抽象方法，並可選擇性地覆寫掛鉤。
 '''
+
 from AbstractClass import AbstractClass
 
 
 class ConcreteClass1(AbstractClass):
-    """
-    Concrete classes have to implement all abstract operations of the base
-    class. They can also override some operations with a default implementation.
-    """
+    '''[具體類別 1] 實作所有抽象方法'''
 
-    def required_operations1(self):
-        print("ConcreteClass1 says: Implemented Operation1")
+    def required_operations1(self) -> None:
+        print('ConcreteClass1: 實作 required_operations1')
 
-    def required_operations2(self):
-        print("ConcreteClass1 says: Implemented Operation2")
+    def required_operations2(self) -> None:
+        print('ConcreteClass1: 實作 required_operations2')
 
 
 class ConcreteClass2(AbstractClass):
-    """
-    Usually, concrete classes override only a fraction of base class'
-    operations.
-    """
+    '''[具體類別 2] 實作抽象方法，並覆寫掛鉤'''
 
     def required_operations1(self) -> None:
-        print("ConcreteClass2 says: Implemented Operation1")
+        print('ConcreteClass2: 實作 required_operations1')
 
     def required_operations2(self) -> None:
-        print("ConcreteClass2 says: Implemented Operation2")
+        print('ConcreteClass2: 實作 required_operations2')
 
     def hook1(self) -> None:
-        print("ConcreteClass2 says: Overridden Hook1")
-
-
+        print('ConcreteClass2: 覆寫 hook1，加入額外行為')
