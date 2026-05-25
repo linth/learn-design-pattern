@@ -1,30 +1,23 @@
 /**
- * product example for SOLID.
- * 
- * 
+ * SOLID 原則 - 商品系統綜合範例
+ * 同一個案例展示五個 SOLID 原則的應用。
  */
 
 {
-
-  // Interface for product operations
+  // ---------- SRP：每個類別僅負責自己的資料 ----------
   interface Product {
     getName(): string;
     getPrice(): number;
     getStock(): number;
   }
 
-  // Single Responsibility Principle (SRP)
-  // Each class has a single responsibility
+  // Book 僅負責管理書籍資料
   class Book implements Product {
-    private name: string;
-    private price: number;
-    private stock: number;
-
-    constructor(name: string, price: number, stock: number) {
-      this.name = name;
-      this.price = price;
-      this.stock = stock;
-    }
+    constructor(
+      private name: string,
+      private price: number,
+      private stock: number,
+    ) {}
 
     getName(): string {
       return this.name;
@@ -39,16 +32,13 @@
     }
   }
 
+  // Clothing 僅負責管理衣物資料
   class Clothing implements Product {
-    private name: string;
-    private price: number;
-    private stock: number;
-
-    constructor(name: string, price: number, stock: number) {
-      this.name = name;
-      this.price = price;
-      this.stock = stock;
-    }
+    constructor(
+      private name: string,
+      private price: number,
+      private stock: number,
+    ) {}
 
     getName(): string {
       return this.name;
@@ -63,20 +53,15 @@
     }
   }
 
-  // 折扣產品
-  // Open/Closed Principle (OCP)
-  // We can easily extend the system without modifying existing code
-  class DiscountedProduct implements Product { 
-    private product: Product;
-    private discount: number;
-
-    constructor(product: Product, discount: number) {
-      this.product = product;
-      this.discount = discount;
-    }
+  // ---------- OCP：新增折扣功能時不修改既有 Product 類別 ----------
+  class DiscountedProduct implements Product {
+    constructor(
+      private product: Product,
+      private discount: number,
+    ) {}
 
     getName(): string {
-      return `${this.product.getName()} (Discounted)`;
+      return `${this.product.getName()} (折扣)`;
     }
 
     getPrice(): number {
@@ -88,16 +73,14 @@
     }
   }
 
-  // Liskov Substitution Principle (LSP)
-  // We can safely use a subclass in place of its superclass
+  // ---------- LSP：DiscountedProduct 可完全取代 Product ----------
   function printProductDetails(product: Product): void {
-    console.log(`Name: ${product.getName()}`);
-    console.log(`Price: $${product.getPrice()}`);
-    console.log(`Stock: ${product.getStock()}`);
+    console.log(`  名稱: ${product.getName()}`);
+    console.log(`  價格: $${product.getPrice()}`);
+    console.log(`  庫存: ${product.getStock()}`);
   }
 
-  // Interface Segregation Principle (ISP)
-  // Each class implements only the methods it needs
+  // ---------- ISP：將大型介面拆分為小型專用介面 ----------
   interface BookStore {
     listBooks(): Book[];
   }
@@ -107,11 +90,7 @@
   }
 
   class BookStoreImpl implements BookStore {
-    private books: Book[];
-
-    constructor(books: Book[]) {
-      this.books = books;
-    }
+    constructor(private books: Book[]) {}
 
     listBooks(): Book[] {
       return this.books;
@@ -119,19 +98,14 @@
   }
 
   class ClothingStoreImpl implements ClothingStore {
-    private clothingItems: Clothing[];
-
-    constructor(clothingItems: Clothing[]) {
-      this.clothingItems = clothingItems;
-    }
+    constructor(private clothingItems: Clothing[]) {}
 
     listClothing(): Clothing[] {
       return this.clothingItems;
     }
   }
 
-  // Dependency Inversion Principle (DIP)
-  // High-level modules depend on abstractions (interfaces)
+  // ---------- DIP：高層函式依賴抽象介面而非具體實作 ----------
   function printStoreItems(store: BookStore | ClothingStore): void {
     if (store instanceof BookStoreImpl) {
       const books = store.listBooks();
@@ -142,23 +116,21 @@
     }
   }
 
-  // Sample usage
-  const book1 = new Book("Book 1", 25, 100);
-  const book2 = new Book("Book 2", 30, 50);
-  const clothing1 = new Clothing("T-Shirt", 15, 200);
+  // 使用範例
+  const book1 = new Book('Book 1', 25, 100);
+  const book2 = new Book('Book 2', 30, 50);
+  const clothing1 = new Clothing('T-Shirt', 15, 200);
 
   const bookStore = new BookStoreImpl([book1, book2]);
   const clothingStore = new ClothingStoreImpl([clothing1]);
 
-  // Open/Closed Principle (OCP) - using the extended DiscountedProduct class
+  // OCP：使用擴充的 DiscountedProduct，不修改 Book
   const discountedBook = new DiscountedProduct(book1, 0.2);
 
-  // Liskov Substitution Principle (LSP) - using the subclass DiscountedProduct
+  // LSP：DiscountedProduct 可替代 Product 使用
   printProductDetails(discountedBook);
 
-  // Dependency Inversion Principle (DIP) - using abstractions
+  // DIP：依賴抽象介面
   printStoreItems(bookStore);
   printStoreItems(clothingStore);
-
-
 }

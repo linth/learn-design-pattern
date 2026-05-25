@@ -1,13 +1,14 @@
 /**
- * Single Responsibility Principle (SRP) for User
- *  - User class: Manages only stuffs related directly to user data (edit name and age)
- *  - UserLogProxy: Manage only the logs of user actions
- * 
- * 
+ * 單一職責原則 (Single Responsibility Principle, SRP) - User 範例
+ *  - User class: 僅負責管理使用者資料（名稱、年齡）
+ *  - UserLogProxy: 僅負責記錄使用者操作日誌
+ *  將資料管理與日誌記錄分離，符合 SRP。
+ *
  * Reference:
  *  - https://medium.com/front-end-weekly/s-o-l-i-d-principles-with-js-examples-db95b44e82e
  */
 
+/** 違反 SRP 的 User 類別：同時管理資料與日誌 */
 class User {
   name: string;
   age: number;
@@ -29,16 +30,19 @@ class User {
 
   setName(name: string) {
     this.name = name;
-    this.addLog('Edited user name');
+    this.addLog('修改使用者名稱');
   }
 
   setAge(age: number) {
     this.age = age;
-    this.addLog('Edited user age');
+    this.addLog('修改使用者年齡');
   }
 }
 
-
+/** 
+ * 遵循 SRP：將日誌記錄職責拆分到獨立類別，
+ * 透過 Proxy 攔截 User 的操作來記錄日誌，不汙染 User 本身
+ */
 class UserLogProxy {
   private logs: string[];
   private target: any;
@@ -72,7 +76,7 @@ class UserLogProxy {
       
       return function(...args: any[]) {
         const result = Reflect.apply(targetValue, target, args);
-        proxyScope.addLog(`Edited user ${propKey.replace('set', '')}`);
+        proxyScope.addLog(`修改使用者 ${propKey.replace('set', '')}`);
         return result;
       };
     }
