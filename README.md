@@ -27,7 +27,8 @@ dotnet run --project path/to/
 
 ### Creational Patterns 生成模式
 只要牽涉到將物件實體化。這類模式都提供一個方法，將客戶從所需要實體化的物件中鬆綁出來。
-- [x] 獨體模式 (Singleton Pattern) — [範例](singleton/)
+- [x] [獨體模式 (Singleton Pattern)](singleton/README.md) — [Python](singleton/py/) · [C#](singleton/cs/) · [TypeScript](singleton/ts/) · [Java](singleton/java/)
+  - C# 實務範例：[Logger](singleton/cs/examples/Logger.cs) · [ConfigManager](singleton/cs/examples/ConfigManager.cs) · [DataFilter](singleton/cs/examples/DataFilter.cs) · [DataStatistics](singleton/cs/examples/DataStatistics.cs) · [CacheManager](singleton/cs/examples/CacheManager.cs) · [DatabaseConnectionPool](singleton/cs/examples/DatabaseConnectionPool.cs)
 - [x] 工廠方法模式 (Factory Method Pattern) — [Python](Factory/py/) · [C#](Factory/cs/)
 - [x] 抽象工廠模式 (Abstract Factory Pattern) — [範例](AbstractFactory/)
 - [x] 建立者模式 (Builder Pattern) — [Python](builder/py/) · [C#](builder/cs/) · [TypeScript](builder/ts/)
