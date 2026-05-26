@@ -1,67 +1,58 @@
-import { AbstractAction, Action } from "./AbstractAction";
-// import { Action } from "./Action.interface";
+import { AbstractAction, Action } from './AbstractAction';
 
-
+/** [具體狀態] 走路 */
 class WalkAction extends AbstractAction {
   constructor() {
-    super('Walk');
+    super('走路');
   }
 }
 
-
+/** [具體狀態] 跑步 */
 class RunAction extends AbstractAction {
   constructor() {
-    super('Run');
+    super('跑步');
   }
 }
 
-
+/** [具體狀態] 跳躍 */
 class JumpAction extends AbstractAction {
   constructor() {
-    super('Jump');
+    super('跳躍');
   }
 }
 
-// add other specfic actions.
-
-
+/** [環境類別] 可隨時切換當前行為 */
 class Context {
-  private currentAction: Action | null;
-
-  constructor() {
-    this.currentAction = null;
-  }
+  private currentAction: Action | null = null;
 
   setCurrentAction(action: Action): void {
     this.currentAction = action;
   }
 
   performAction(): void {
-    if (this.currentAction !== null) {
+    if (this.currentAction) {
       this.currentAction.performAction();
     }
   }
 }
 
 {
-  // 使用一個context class
   const context = new Context();
+  const walk = new WalkAction();
+  const run = new RunAction();
+  const jump = new JumpAction();
 
-  const walkAction = new WalkAction();
-  const runAction = new RunAction();
-  const jumpAction = new JumpAction();
-
-  // 可以透過context進行轉換action.
-  context.setCurrentAction(walkAction);
+  // 可動態切換不同行為（狀態）
+  context.setCurrentAction(walk);
   context.performAction();
 
-  context.setCurrentAction(runAction);
-  context.performAction();
-  
-  context.setCurrentAction(jumpAction);
+  context.setCurrentAction(run);
   context.performAction();
 
-  context.setCurrentAction(walkAction);
+  context.setCurrentAction(jump);
+  context.performAction();
+
+  context.setCurrentAction(walk);
   context.performAction();
 }
 

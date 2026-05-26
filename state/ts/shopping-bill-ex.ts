@@ -1,24 +1,21 @@
 /**
- * state design - 訂單生命週期管理
- * 
- * 假設我們正在開發一個電子商務平台，需要管理訂單的不同狀態，例如
- *  1. 新訂單
- *  2. 付款待處理
- *  3. 發貨中
- *  4. 已完成等。
- * 
- * 每個狀態下，訂單的行為和處理方式可能會有所不同。
- * 
+ * 狀態模式 (State Pattern) - 訂單生命週期管理
+ *
+ * 電子商務訂單狀態流程：新訂單 → 付款待處理 → 發貨中 → 已完成
+ * 每個狀態下的行為不同，使用狀態模式避免大量 if-else。
+ *
  * Reference:
  *  - https://refactoring.guru/design-patterns/state
  */
 
+/** [狀態介面] 訂單狀態 */
 interface OrderState {
   cancelOrder(): void;
   verifyPayment(): void;
   shipOrder(): void;
 }
 
+/** [具體狀態] 新訂單 */
 class NewOrderState implements OrderState {
   cancelOrder(): void {
     console.log('新訂單 - 取消訂單');
@@ -33,6 +30,7 @@ class NewOrderState implements OrderState {
   }
 }
 
+/** [具體狀態] 付款待處理 */
 class PaymentPendingState implements OrderState {
   cancelOrder(): void {
     console.log('付款待處理 - 取消訂單');
@@ -47,6 +45,7 @@ class PaymentPendingState implements OrderState {
   }
 }
 
+/** [具體狀態] 發貨中 */
 class ShippingState implements OrderState {
   cancelOrder(): void {
     console.log('發貨中 - 取消訂單');
@@ -61,6 +60,7 @@ class ShippingState implements OrderState {
   }
 }
 
+/** [具體狀態] 已完成 */
 class CompletedState implements OrderState {
   cancelOrder(): void {
     console.log('已完成 - 取消訂單');
@@ -75,6 +75,7 @@ class CompletedState implements OrderState {
   }
 }
 
+/** [環境類別] 訂單，可動態切換狀態 */
 class Order {
   private state: OrderState;
 
@@ -99,25 +100,25 @@ class Order {
   }
 }
 
-
 {
   const order = new Order();
 
-  order.verifyPayment(); // 新訂單 - 驗證付款
-  order.shipOrder();     // 新訂單 - 發貨
+  console.log('=== 新訂單 ===');
+  order.verifyPayment();
+  order.shipOrder();
 
+  console.log('\n=== 付款待處理 ===');
   order.setState(new PaymentPendingState());
+  order.verifyPayment();
+  order.shipOrder();
 
-  order.verifyPayment(); // 付款待處理 - 驗證付款
-  order.shipOrder();     // 付款待處理 - 發貨
-
+  console.log('\n=== 發貨中 ===');
   order.setState(new ShippingState());
+  order.verifyPayment();
+  order.shipOrder();
 
-  order.verifyPayment(); // 發貨中 - 驗證付款
-  order.shipOrder();     // 發貨中 - 發貨
-
+  console.log('\n=== 已完成 ===');
   order.setState(new CompletedState());
-
-  order.verifyPayment(); // 已完成 - 驗證付款
-  order.shipOrder();     // 已完成 - 發貨
+  order.verifyPayment();
+  order.shipOrder();
 }
