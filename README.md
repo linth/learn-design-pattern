@@ -50,7 +50,7 @@ dotnet run --project path/to/
 - [x] [樣板方法模式 (Template Method Pattern)](template/README.md) — [C#](template/cs/) · [Python](template/py/) · [TypeScript](template/ts/) · [Java](template/java/)
 - [x] 觀察者模式 (Observer Pattern) — [範例](observer/)
 - [x] [狀態模式 (State Pattern)](state/README.md) — [Python](state/py/) · [C#](state/cs/) · [TypeScript](state/ts/) · [Java](state/java/)
-- [x] 責任鏈模式 (Chain of Responsibility Pattern) — [範例](chain_of_responsibility/)
+- [x] [責任鏈模式 (Chain of Responsibility Pattern)](chain_of_responsibility/README.md) — [Python](chain_of_responsibility/py/) · [C#](chain_of_responsibility/cs/) · [TypeScript](chain_of_responsibility/ts/)
 - [x] 中介者模式 (Mediator Pattern) — [範例](Mediator/)
 - [x] 備忘錄模式 (Memento Pattern) — [範例](memento/)
 - [x] 命令模式 (Command Pattern) — [範例](command/)
